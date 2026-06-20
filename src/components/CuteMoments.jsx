@@ -22,15 +22,15 @@ const CuteMoments = () => {
             return (
               <div 
                 key={index} 
-                className="flex-shrink-0 mx-6 bg-white p-3 pb-10 shadow-lg hover:shadow-[0_0_30px_rgba(255,182,193,0.6)] transition-all duration-300 hover:scale-110 cursor-pointer"
-                style={{ 
-                  transform: `rotate(${rotation}deg)`,
-                  width: '240px'
-                }}
+                className="relative w-48 md:w-64 aspect-[3/4] rounded-2xl overflow-hidden shadow-[0_0_30px_rgba(255,182,193,0.2)] border border-rose-300/20 shrink-0 transform -rotate-2"
+                style={{ transform: `rotate(${rotation}deg)` }}
               >
-                <div className="aspect-[4/5] overflow-hidden bg-slate-100">
-                  <img src={url} alt="Cute Memory" className="w-full h-full object-cover pointer-events-none" loading="lazy" />
-                </div>
+                <img 
+                  src={url} 
+                  alt="Cute Moment" 
+                  className="w-full h-full object-cover object-top" 
+                  loading="lazy"
+                />
               </div>
             );
           })}

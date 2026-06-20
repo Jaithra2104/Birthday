@@ -40,12 +40,12 @@ const HerPhotos = () => {
                   <motion.div
                     key={imgIndex}
                     whileHover={{ scale: 1.05, zIndex: 50 }}
-                    className="relative w-48 md:w-72 aspect-[4/3] rounded-xl overflow-hidden shadow-[0_0_20px_rgba(255,182,193,0.15)] border border-white/10 shrink-0"
+                    className="relative w-40 md:w-56 aspect-[3/4] rounded-xl overflow-hidden shadow-[0_0_20px_rgba(255,182,193,0.15)] border border-white/10 shrink-0 bg-slate-900"
                   >
                     <img 
                       src={url} 
                       alt="Her" 
-                      className="w-full h-full object-cover filter contrast-110" 
+                      className="w-full h-full object-cover object-top filter contrast-110" 
                     />
                     {/* Cinematic Film Overlay */}
                     <div className="absolute inset-0 bg-black/10 mix-blend-overlay pointer-events-none" />
