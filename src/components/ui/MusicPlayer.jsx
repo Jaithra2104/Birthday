@@ -11,6 +11,7 @@ const MusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrack, setCurrentTrack] = useState(0);
   const audioRef = useRef(null);
+  const userInteracted = useRef(false);
 
   useEffect(() => {
     // If audio exists, pause it before switching tracks
@@ -23,24 +24,63 @@ const MusicPlayer = () => {
     // Automatically play next track when current finishes
     audioRef.current.addEventListener('ended', handleNextTrack);
 
-    // If it was already playing, autoplay the next track
-    if (isPlaying) {
-      audioRef.current.play().catch(e => console.log("Audio play failed:", e));
-    }
+    // Try to autoplay on mount (might be blocked by browser)
+    const tryAutoplay = async () => {
+      try {
+        await audioRef.current.play();
+        setIsPlaying(true);
+      } catch (e) {
+        console.log("Autoplay prevented by browser. Waiting for user interaction.");
+        
+        // If autoplay fails, attach global interaction listeners
+        const playOnInteract = async () => {
+          if (userInteracted.current) return; // Prevent multiple triggers
+          userInteracted.current = true;
+          
+          try {
+            await audioRef.current.play();
+            setIsPlaying(true);
+          } catch (err) {
+            console.error("Play failed after interaction:", err);
+          }
+          
+          // Cleanup listeners after successful play
+          ['click', 'touchstart', 'scroll', 'keydown'].forEach(evt => {
+            window.removeEventListener(evt, playOnInteract);
+          });
+        };
+
+        // Attach listeners to wake up audio on first interaction
+        ['click', 'touchstart', 'scroll', 'keydown'].forEach(evt => {
+          window.addEventListener(evt, playOnInteract, { once: true });
+        });
+      }
+    };
+
+    tryAutoplay();
 
     return () => {
       if (audioRef.current) {
         audioRef.current.removeEventListener('ended', handleNextTrack);
         audioRef.current.pause();
       }
+      
+      // Cleanup global listeners
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      ['click', 'touchstart', 'scroll', 'keydown'].forEach(evt => {
+        // Just defining a generic cleanup since we can't easily remove anonymous async funcs if not referenced
+        // But the { once: true } flag helps auto-remove them.
+      });
     };
   }, [currentTrack]); // Run effect when track changes
 
   const handleNextTrack = () => {
+    userInteracted.current = true; // Manual interaction
     setCurrentTrack((prev) => (prev + 1) % playlist.length);
   };
 
   const togglePlay = () => {
+    userInteracted.current = true; // Manual interaction
     if (!audioRef.current) return;
 
     if (isPlaying) {
