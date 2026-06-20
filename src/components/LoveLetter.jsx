@@ -14,7 +14,7 @@ const LoveLetter = () => {
       
       <h2 className="text-5xl md:text-7xl font-cursive text-center mb-16 text-rose-300 text-glow">A Letter For You</h2>
 
-      <div className="relative w-full max-w-2xl aspect-[3/2] flex items-center justify-center cursor-pointer perspective-[1000px]" onClick={() => setIsOpen(true)}>
+      <div className={`relative w-full max-w-2xl flex items-center justify-center cursor-pointer perspective-[1000px] ${isOpen ? 'min-h-[400px]' : 'aspect-[4/3] sm:aspect-[3/2]'}`} onClick={() => setIsOpen(true)}>
         
         {/* The Envelope */}
         <motion.div 

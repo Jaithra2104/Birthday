@@ -55,18 +55,18 @@ const TimelineSection = () => {
       <h2 className="text-4xl md:text-6xl font-serif text-center mb-24 text-rose-300 text-glow">Our Beautiful Journey</h2>
       
       <div className="relative w-full max-w-5xl mx-auto">
-        <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-rose-500/10 via-rose-300/60 to-transparent rounded-full shadow-[0_0_15px_rgba(255,182,193,0.5)]" />
+        <div className="absolute left-6 md:left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-rose-500/10 via-rose-300/60 to-transparent rounded-full shadow-[0_0_15px_rgba(255,182,193,0.5)]" />
         
         {timelinePhotos.map((memory, index) => (
-          <div key={index} className={`timeline-card relative flex w-full my-24 ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}>
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-5 h-5 rounded-full bg-rose-400 border-4 border-slate-950 z-10 shadow-[0_0_20px_#ffb6c1] animate-pulse" />
+          <div key={index} className={`timeline-card relative flex w-full my-16 md:my-24 ${index % 2 === 0 ? 'justify-end md:justify-start' : 'justify-end'}`}>
+            <div className="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-4 h-4 md:w-5 md:h-5 rounded-full bg-rose-400 border-2 md:border-4 border-slate-950 z-10 shadow-[0_0_20px_#ffb6c1] animate-pulse" />
             
-            <div className={`w-5/12 glass p-6 md:p-8 rounded-3xl hover:scale-[1.02] transition-all duration-500 cursor-pointer shadow-[0_0_30px_rgba(255,182,193,0.1)] ${index % 2 === 0 ? 'mr-auto text-right' : 'ml-auto text-left'}`}>
-              <div className="text-rose-400 font-bold tracking-widest text-sm mb-3 uppercase">{memory.date}</div>
-              <h3 className="text-3xl font-serif mb-4 text-white drop-shadow-md">{memory.title}</h3>
-              <p className="text-rose-100/80 font-light leading-relaxed text-lg">{memory.desc}</p>
+            <div className={`w-[80%] sm:w-[85%] md:w-5/12 glass p-5 md:p-8 rounded-3xl hover:scale-[1.02] transition-all duration-500 cursor-pointer shadow-[0_0_30px_rgba(255,182,193,0.1)] ${index % 2 === 0 ? 'md:mr-auto md:text-right text-left' : 'ml-auto text-left'}`}>
+              <div className="text-rose-400 font-bold tracking-widest text-xs md:text-sm mb-2 md:mb-3 uppercase">{memory.date}</div>
+              <h3 className="text-2xl md:text-3xl font-serif mb-3 md:mb-4 text-white drop-shadow-md">{memory.title}</h3>
+              <p className="text-rose-100/80 font-light leading-relaxed text-sm md:text-lg">{memory.desc}</p>
               
-              <div className="mt-6 rounded-2xl overflow-hidden shadow-2xl relative group aspect-[4/3]">
+              <div className="mt-4 md:mt-6 rounded-2xl overflow-hidden shadow-2xl relative group aspect-[4/3]">
                 <div className="absolute inset-0 bg-rose-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 mix-blend-overlay" />
                 <img 
                   src={memory.img} 

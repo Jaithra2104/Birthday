@@ -91,7 +91,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 2, delay: 0.5, ease: "easeOut" }}
-          className="text-6xl md:text-8xl lg:text-9xl font-cursive font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-200 via-white to-pink-200 mb-6 drop-shadow-[0_5px_15px_rgba(255,182,193,0.4)] py-4"
+          className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-cursive font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-200 via-white to-pink-200 mb-6 drop-shadow-[0_5px_15px_rgba(255,182,193,0.4)] py-4"
         >
           Happy Birthday My Love
         </motion.h1>
@@ -106,10 +106,10 @@ const HeroSection = () => {
           <div className="absolute inset-0 bg-rose-500/20 blur-3xl rounded-full" />
           
           <div className="relative glass p-8 md:p-12 rounded-3xl border border-white/10 shadow-[0_0_40px_rgba(255,182,193,0.1)] backdrop-blur-md">
-            <p className="text-3xl md:text-4xl lg:text-5xl font-dancing leading-relaxed text-rose-50 tracking-wide drop-shadow-md">
+            <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-dancing leading-relaxed text-rose-50 tracking-wide drop-shadow-md">
               Today is not just your birthday.
               <br className="my-2" />
-              <span className="block mt-4 text-rose-200 font-cursive text-4xl md:text-5xl lg:text-6xl drop-shadow-xl">
+              <span className="block mt-4 text-rose-200 font-cursive text-3xl sm:text-4xl md:text-5xl lg:text-6xl drop-shadow-xl">
                 Today is the day the world received its most beautiful masterpiece.
               </span>
             </p>

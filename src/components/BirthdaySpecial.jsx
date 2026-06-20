@@ -193,7 +193,7 @@ const BirthdaySpecial = () => {
                       animate={{ 
                         opacity: 1, 
                         y: isHoveringPile ? 0 : 0,
-                        x: isHoveringPile ? offset * 120 : offset * 5, // Spread out on hover, stack otherwise
+                        x: isHoveringPile ? offset * (typeof window !== 'undefined' && window.innerWidth < 768 ? 40 : 120) : offset * 5,
                         rotate: isHoveringPile ? offset * 10 : offset * 2,
                         scale: isHoveringPile && isCenter ? 1.1 : 1,
                         zIndex: isHoveringPile ? (isCenter ? 50 : 40 - Math.abs(offset)) : i
